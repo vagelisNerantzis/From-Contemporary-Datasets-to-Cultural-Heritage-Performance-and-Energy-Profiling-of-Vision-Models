@@ -15,7 +15,7 @@ import time
 import subprocess
 import threading
 
-# Path to lock file used by CodeCarbon
+
 CODECARBON_LOCK_FILE = os.path.join(os.path.expanduser("~"), "AppData", "Local", "Temp", ".codecarbon.lock")
 
 class FocalLoss(nn.Module):
@@ -40,7 +40,7 @@ def get_sampler_targets(dataset):
 def clean_codecarbon_lock():
     if os.path.exists(CODECARBON_LOCK_FILE):
         try:
-            # Προσπαθούμε να διαγράψουμε το αρχείο κλειδώματος
+        
             os.remove(CODECARBON_LOCK_FILE)
             print(f"✅ Removed stale codecarbon lock file: {CODECARBON_LOCK_FILE}")
             return True
@@ -72,7 +72,7 @@ def train_model(config):
     results_path = config["results_path"]
     os.makedirs(results_path, exist_ok=True)
 
-    # Check write permissions
+    
     try:
         with open(os.path.join(results_path, "test.txt"), "w") as f:
             f.write("test")
@@ -81,7 +81,7 @@ def train_model(config):
         print(f"❌ No write access to {results_path}: {e}")
         sys.exit(1)
 
-    # Clean CodeCarbon lock
+    
     lock_removed = clean_codecarbon_lock()
     tracker = None
     try:
@@ -103,7 +103,7 @@ def train_model(config):
         if input("Continue without energy tracking? [y/n]: ").lower() != "y":
             sys.exit(1)
 
-    # Start GPU logger
+    
     gpu_log_file = os.path.join(results_path, "gpu_power.log")
     stop_event = threading.Event()
     thread = threading.Thread(target=log_gpu_power, args=(gpu_log_file, stop_event))
@@ -169,7 +169,7 @@ def train_model(config):
     torch.save(model.state_dict(), config["save_path"])
     print(f"✅ Model saved to {config['save_path']}")
 
-    # Evaluation
+
     y_true, y_pred = [], []
     model.eval()
     for inputs, labels in val_loader:
@@ -181,7 +181,7 @@ def train_model(config):
     with open(os.path.join(results_path, "metrics.yaml"), "w") as f:
         yaml.dump(classification_report(y_true, y_pred, target_names=val_dataset.classes, output_dict=True), f)
 
-    # Plot curves
+    
     plt.figure()
     plt.plot(train_losses, label='Train Loss')
     plt.plot(val_losses, label='Val Loss')
@@ -204,7 +204,7 @@ def train_model(config):
     plt.xticks(ticks, val_dataset.classes, rotation=90)
     plt.yticks(ticks, val_dataset.classes)
 
-    # Add numbers to the confusion matrix cells
+    
     thresh = conf_matrix.max() / 2.
     for (i, j), value in np.ndenumerate(conf_matrix):
         plt.text(j, i, f'{value}', ha="center", va="center",
