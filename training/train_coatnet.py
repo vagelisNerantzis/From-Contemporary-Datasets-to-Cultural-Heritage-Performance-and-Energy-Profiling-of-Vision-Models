@@ -114,7 +114,7 @@ def train_model(config):
     train_loader = DataLoader(train_dataset, batch_size=config["batch_size"], sampler=sampler, num_workers=config["num_workers"])
     val_loader = DataLoader(val_dataset, batch_size=config["batch_size"], shuffle=False, num_workers=config["num_workers"])
 
-    # ✅ Modular επιλογή μοντέλου από το config
+    
     model = timm.create_model(
         config["model_name"],
         pretrained=config["pretrained"],
