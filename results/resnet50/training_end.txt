@@ -1,0 +1,4 @@
+Training ended at: 2025-04-16 10:33:18
+Final train loss: 0.07903787242612963
+Final validation loss: 0.3701666420825587
+Final train accuracy: 0.9373119358074222

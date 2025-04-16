@@ -1,0 +1,111 @@
+Acrylic:
+  f1-score: 0.8571428571428571
+  precision: 0.75
+  recall: 1.0
+  support: 3.0
+Chenille:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 3.0
+Corduroy:
+  f1-score: 0.8571428571428571
+  precision: 0.8571428571428571
+  recall: 0.8571428571428571
+  support: 7.0
+Cotton:
+  f1-score: 0.8760806916426513
+  precision: 0.8888888888888888
+  recall: 0.8636363636363636
+  support: 176.0
+Crepe:
+  f1-score: 0.35714285714285715
+  precision: 0.23809523809523808
+  recall: 0.7142857142857143
+  support: 7.0
+Denim:
+  f1-score: 0.8888888888888888
+  precision: 0.9523809523809523
+  recall: 0.8333333333333334
+  support: 48.0
+Felt:
+  f1-score: 0.4
+  precision: 0.25
+  recall: 1.0
+  support: 1.0
+Fleece:
+  f1-score: 0.9473684210526315
+  precision: 0.9
+  recall: 1.0
+  support: 9.0
+Leather:
+  f1-score: 0.8888888888888888
+  precision: 0.8
+  recall: 1.0
+  support: 4.0
+Linen:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 5.0
+Lut:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 1.0
+Nylon:
+  f1-score: 0.6857142857142857
+  precision: 0.6666666666666666
+  recall: 0.7058823529411765
+  support: 17.0
+Polyester:
+  f1-score: 0.7878787878787878
+  precision: 0.8
+  recall: 0.7761194029850746
+  support: 67.0
+Satin:
+  f1-score: 0.26666666666666666
+  precision: 0.25
+  recall: 0.2857142857142857
+  support: 7.0
+Silk:
+  f1-score: 0.7586206896551724
+  precision: 0.7857142857142857
+  recall: 0.7333333333333333
+  support: 15.0
+Suede:
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 1.0
+Terrycloth:
+  f1-score: 0.8888888888888888
+  precision: 0.8888888888888888
+  recall: 0.8888888888888888
+  support: 9.0
+Velvet:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 3.0
+Viscose:
+  f1-score: 0.625
+  precision: 1.0
+  recall: 0.45454545454545453
+  support: 11.0
+Wool:
+  f1-score: 0.8679245283018868
+  precision: 0.8846153846153846
+  recall: 0.8518518518518519
+  support: 27.0
+accuracy: 0.8194774346793349
+macro avg:
+  f1-score: 0.747667465450366
+  precision: 0.7456196581196581
+  recall: 0.7982366919329167
+  support: 421.0
+weighted avg:
+  f1-score: 0.827577504116147
+  precision: 0.8479312585013297
+  recall: 0.8194774346793349
+  support: 421.0
