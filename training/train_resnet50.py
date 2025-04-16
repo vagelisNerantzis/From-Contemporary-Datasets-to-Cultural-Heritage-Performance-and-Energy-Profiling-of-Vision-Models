@@ -16,7 +16,7 @@ import shutil
 import subprocess
 import threading
 
-# Διαδρομή του αρχείου κλειδώματος του codecarbon
+
 CODECARBON_LOCK_FILE = os.path.join(os.path.expanduser("~"), "AppData", "Local", "Temp", ".codecarbon.lock")
 
 class FocalLoss(nn.Module):
@@ -65,10 +65,10 @@ def log_gpu_power(log_file, stop_event):
         except Exception as e:
             print(f"⚠️ An error occurred during GPU power logging: {e}")
             break
-        time.sleep(5)  # Καταγραφή κάθε 5 δευτερολέπτων (μπορείτε να το προσαρμόσετε)
+        time.sleep(5)  
 
 def train_model(config):
-    # Βεβαιωθείτε ότι ο κατάλογος αποτελεσμάτων υπάρχει και ότι έχετε δικαιώματα εγγραφής
+    
     results_path = config['results_path']
     if not os.path.exists(results_path):
         print(f"Creating results directory: {results_path}")
@@ -76,7 +76,7 @@ def train_model(config):
     else:
         print(f"Results directory exists: {results_path}")
 
-    # Δοκιμαστική εγγραφή για έλεγχο δικαιωμάτων
+    
     try:
         test_file_path = os.path.join(results_path, "test_write_permissions.txt")
         with open(test_file_path, 'w') as f:
@@ -88,12 +88,12 @@ def train_model(config):
         print("Please check directory permissions or specify a different path.")
         sys.exit(1)
 
-    # Καθαρίστε το αρχείο κλειδώματος του codecarbon πριν ξεκινήσετε
+    
     lock_removed = clean_codecarbon_lock()
 
     tracker = None
     try:
-        # Δημιουργήστε και ξεκινήστε τον tracker με περισσότερες πληροφορίες καταγραφής
+        
         print("Initializing EmissionsTracker...")
         emissions_file = os.path.join(results_path, "emissions.csv")
         print(f"Emissions will be saved to: {emissions_file}")
@@ -103,9 +103,9 @@ def train_model(config):
                 output_dir=results_path,
                 output_file="emissions.csv",
                 measure_power_secs=15,
-                log_level="warning",  # Αλλαγή σε warning για λιγότερη έξοδο
-                save_to_file=True,  # Σιγουρευτείτε ότι τα αποτελέσματα θα αποθηκευτούν σε αρχείο
-                allow_multiple_runs=True  # Επιτρέπουμε πολλαπλές εκτελέσεις
+                log_level="warning",  
+                save_to_file=True,  
+                allow_multiple_runs=True  
             )
             print("Starting EmissionsTracker...")
             tracker.start()
@@ -121,13 +121,13 @@ def train_model(config):
         tracker = None
         print("Continuing without energy tracking")
 
-    # Αποθηκεύστε αρχείο με πληροφορίες για την έναρξη της εκπαίδευσης
+    
     with open(os.path.join(results_path, "training_start.txt"), "w") as f:
         f.write(f"Training started at: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"Using device: {torch.device('cuda' if torch.cuda.is_available() else 'cpu')}\n")
         f.write(f"EmissionsTracker active: {tracker is not None}\n")
 
-    # Ρύθμιση για την καταγραφή της ενέργειας της GPU
+    
     gpu_log_file = os.path.join(results_path, "gpu_power.log")
     stop_gpu_log_event = threading.Event()
     gpu_log_thread = threading.Thread(target=log_gpu_power, args=(gpu_log_file, stop_gpu_log_event))
@@ -158,7 +158,7 @@ def train_model(config):
     train_loader = DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=num_workers)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-    # Διορθωμένος κώδικας για το φόρτωμα του ResNet50
+    
     if config["pretrained"]:
         model = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
     else:
@@ -228,13 +228,13 @@ def train_model(config):
             val_acc = val_correct / val_total
             print(f"Epoch {epoch+1}/{num_epochs} | Train Loss: {train_loss:.4f} | Val Loss: {val_losses[-1]:.4f} | Train Acc: {train_acc:.4f} | Val Acc: {val_acc:.4f}")
 
-            # Αποθηκεύστε προσωρινή κατάσταση εκπαίδευσης κάθε 5 εποχές
+            
             if (epoch + 1) % 5 == 0 or (epoch + 1) == num_epochs:
                 temp_save_path = os.path.join(results_path, f"model_epoch_{epoch+1}.pth")
                 torch.save(model.state_dict(), temp_save_path)
                 print(f"Saved intermediate model to {temp_save_path}")
 
-        # Δημιουργήστε τον κατάλογο αποθήκευσης αν δεν υπάρχει
+        
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         torch.save(model.state_dict(), save_path)
         print(f"Saved final model to {save_path}")
@@ -297,18 +297,18 @@ def train_model(config):
 
     except Exception as e:
         print(f"❌ Error during training: {str(e)}")
-        # Αποθηκεύστε το τελευταίο μοντέλο σε περίπτωση σφάλματος
+        
         error_save_path = os.path.join(results_path, "model_error_checkpoint.pth")
         torch.save(model.state_dict(), error_save_path)
         print(f"Saved error checkpoint to {error_save_path}")
         raise e
     finally:
-        # Σταματήστε την καταγραφή της ενέργειας της GPU
+        
         stop_gpu_log_event.set()
         gpu_log_thread.join()
         print(f"🛑 GPU power logging stopped.")
 
-        # Βεβαιωθείτε ότι ο tracker σταματά σωστά και αποθηκεύει τα δεδομένα
+        
         if tracker:
             print("Stopping EmissionsTracker and saving energy data...")
             try:
@@ -328,7 +328,7 @@ def train_model(config):
 
             clean_codecarbon_lock()
 
-        # Αποθηκεύστε αρχείο με πληροφορίες για το τέλος της εκπαίδευσης
+        
         try:
             with open(os.path.join(results_path, "training_end.txt"), "w") as f:
                 f.write(f"Training ended at: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
