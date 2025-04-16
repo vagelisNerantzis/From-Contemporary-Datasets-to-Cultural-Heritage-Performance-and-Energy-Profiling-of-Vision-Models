@@ -1,0 +1,13 @@
+model_name: maxvit_tiny_tf_224.in1k
+data_dir: dataset/fabrics_split
+results_path: results/maxvit
+save_path: models/maxvit/maxvit.pt
+
+batch_size: 32
+num_epochs: 50
+image_size: 224
+learning_rate: 0.0003
+num_workers: 2
+
+loss_function: focal
+pretrained: true

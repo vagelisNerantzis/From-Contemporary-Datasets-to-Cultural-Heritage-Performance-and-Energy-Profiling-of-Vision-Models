@@ -1,0 +1,73 @@
+stages:
+  train_resnet50:
+    cmd: python training/train_resnet50.py --config configs/train_resnet50.yaml
+    deps:
+    - configs/train_resnet50.yaml
+    - dataset
+    - training/train_resnet50.py
+    outs:
+    - models/resnet50/resnet50.pt
+    - results/resnet50
+  train_resnet50_50ep:
+    cmd: python training/train_resnet50.py --config configs/train_resnet50_50ep.yaml
+    deps:
+    - configs/train_resnet50_50ep.yaml
+    - dataset/fabrics_split
+    - training/train_resnet50.py
+    outs:
+    - models/resnet50/resnet50_50ep.pt
+    - results/resnet50_50ep
+  train_vit:
+    cmd: python training/train_vit.py --config configs/train_vit.yaml
+    deps:
+    - configs/train_vit.yaml
+    - dataset
+    - training/train_vit.py
+    outs:
+    - models/vit/vit.pt
+    - results/vit
+  train_swin:
+    cmd: python training/train_swin.py --config configs/train_swin.yaml
+    deps:
+    - configs/train_swin.yaml
+    - dataset
+    - training/train_swin.py
+    outs:
+    - models/swin/swin.pt
+    - results/swin
+  train_convnext:
+    cmd: python training/train_convnext.py --config configs/train_convnext.yaml
+    deps:
+    - configs/train_convnext.yaml
+    - dataset
+    - training/train_convnext.py
+    outs:
+    - models/convnext/convnext.pt
+    - results/convnext
+  train_efficientnetv2:
+    cmd: python training/train_efficientnetv2.py --config configs/train_efficientnetv2.yaml
+    deps:
+    - configs/train_efficientnetv2.yaml
+    - dataset
+    - training/train_efficientnetv2.py
+    outs:
+    - models/efficientnetv2/efficientnetv2.pt
+    - results/efficientnetv2
+  train_coatnet:
+    cmd: python training/train_coatnet.py --config configs/train_coatnet.yaml
+    deps:
+    - configs/train_coatnet.yaml
+    - dataset
+    - training/train_coatnet.py
+    outs:
+    - models/coatnet/coatnet.pt
+    - results/coatnet
+  train_maxvit:
+    cmd: python training/train_maxvit.py --config configs/train_maxvit.yaml
+    deps:
+    - configs/train_maxvit.yaml
+    - dataset
+    - training/train_maxvit.py
+    outs:
+    - models/maxvit/maxvit.pt
+    - results/maxvit

@@ -1,0 +1,14 @@
+# configs/train_coatnet.yaml
+model_name: coatnet_0_rw_224.sw_in1k
+data_dir: dataset/fabrics_split
+results_path: results/coatnet
+save_path: models/coatnet/coatnet.pt
+
+batch_size: 32
+num_epochs: 50
+image_size: 224
+learning_rate: 0.0003
+num_workers: 2
+
+loss_function: focal
+pretrained: true

@@ -1,0 +1,2 @@
+Fabric
+Rayon 100

@@ -1,0 +1,11 @@
+data_dir: dataset/fabrics_split
+results_path: results/swin
+save_path: models/swin/swin.pt
+
+image_size: 224
+batch_size: 16
+num_epochs: 50
+learning_rate: 0.0001
+num_workers: 4
+pretrained: true
+loss_function: focal

@@ -1,0 +1,10 @@
+stages:
+  train_resnet50:
+    cmd: python scripts/train_resnet50.py --config configs/train_resnet50.yaml
+    deps:
+    - configs/train_resnet50.yaml
+    - dataset
+    - scripts/train_resnet50.py
+    outs:
+    - models/resnet50/resnet50.pt
+    - results/resnet50

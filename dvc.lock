@@ -1,0 +1,210 @@
+schema: '2.0'
+stages:
+  train_resnet50:
+    cmd: python training/train_resnet50.py --config configs/train_resnet50.yaml
+    deps:
+    - path: configs/train_resnet50.yaml
+      hash: md5
+      md5: d03f99505ae7cd79f303a1e1f967ac41
+      size: 297
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_resnet50.py
+      hash: md5
+      md5: d3340908269721e6c7ef750e22fdc966
+      size: 16183
+    outs:
+    - path: models/resnet50/resnet50.pt
+      hash: md5
+      md5: 25a8570b26b06a23e57b80370c923d24
+      size: 94513974
+    - path: results/resnet50
+      hash: md5
+      md5: 11149f912212ce7b9ac362dbaded2dc1.dir
+      size: 189158125
+      nfiles: 10
+  train_resnet50_50ep:
+    cmd: python training/train_resnet50.py --config configs/train_resnet50_50ep.yaml
+    deps:
+    - path: configs/train_resnet50_50ep.yaml
+      hash: md5
+      md5: eca988e6c7cb28db56aeb67bc6bc4e7e
+      size: 316
+    - path: dataset/fabrics_split
+      hash: md5
+      md5: 3f4f670abb9711b9f9cd5d5f0865cc51.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_resnet50.py
+      hash: md5
+      md5: 7f62ffd31cff0ef5c57e3f8ece98a4ba
+      size: 16214
+    outs:
+    - path: models/resnet50/resnet50_50ep.pt
+      hash: md5
+      md5: fe5e782bbad800cd2b7b73ddddd572ae
+      size: 94515594
+    - path: results/resnet50_50ep
+      hash: md5
+      md5: 3f64ab5e285df1e928462c7d2542a8cc.dir
+      size: 945305053
+      nfiles: 17
+  train_vit:
+    cmd: python training/train_vit.py --config configs/train_vit.yaml
+    deps:
+    - path: configs/train_vit.yaml
+      hash: md5
+      md5: ce38510c4968fbe2a9e08abb80082d2f
+      size: 241
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_vit.py
+      hash: md5
+      md5: 91a7122b1442c787d799ccd6212d8a58
+      size: 9052
+    outs:
+    - path: models/vit/vit.pt
+      hash: md5
+      md5: 2041db98fd4d28dd7c0290abebe7db94
+      size: 343306194
+    - path: results/vit
+      hash: md5
+      md5: 09abb5c91e726a5f3c7b908fbeace18a.dir
+      size: 162559
+      nfiles: 6
+  train_swin:
+    cmd: python training/train_swin.py --config configs/train_swin.yaml
+    deps:
+    - path: configs/train_swin.yaml
+      hash: md5
+      md5: df2dc15b3f4494cade1c10aa666fbb67
+      size: 223
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_swin.py
+      hash: md5
+      md5: 55545c22bfb219f43656d9558b9b922a
+      size: 8743
+    outs:
+    - path: models/swin/swin.pt
+      hash: md5
+      md5: de22c7183e104d4d37e3de9f0c7cf831
+      size: 110424201
+    - path: results/swin
+      hash: md5
+      md5: 97fae06393b877e75147b1b9382bd74a.dir
+      size: 147111
+      nfiles: 6
+  train_convnext:
+    cmd: python training/train_convnext.py --config configs/train_convnext.yaml
+    deps:
+    - path: configs/train_convnext.yaml
+      hash: md5
+      md5: be1b848c2daee76bf5ba828de2e0cf02
+      size: 237
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_convnext.py
+      hash: md5
+      md5: 08db182a681aa6b000a3ad6715f99e0a
+      size: 8751
+    outs:
+    - path: models/convnext/convnext.pt
+      hash: md5
+      md5: 9dd585c42243777ed98aacb7f08c8ef4
+      size: 111408512
+    - path: results/convnext
+      hash: md5
+      md5: 3004504a4dbc24874d7247393d035cb8.dir
+      size: 148718
+      nfiles: 6
+  train_efficientnetv2:
+    cmd: python training/train_efficientnetv2.py --config configs/train_efficientnetv2.yaml
+    deps:
+    - path: configs/train_efficientnetv2.yaml
+      hash: md5
+      md5: 39bcd8b70a732eb77272345d89e1c2f8
+      size: 255
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_efficientnetv2.py
+      hash: md5
+      md5: e62c9ac16d793da19c917d98fe1e31bc
+      size: 8801
+    outs:
+    - path: models/efficientnetv2/efficientnetv2.pt
+      hash: md5
+      md5: bd41711a484cdda2f2e8f85bb2f944d3
+      size: 81716948
+    - path: results/efficientnetv2
+      hash: md5
+      md5: 21acd5246009bffdeda82f26038becd2.dir
+      size: 129548
+      nfiles: 6
+  train_coatnet:
+    cmd: python training/train_coatnet.py --config configs/train_coatnet.yaml
+    deps:
+    - path: configs/train_coatnet.yaml
+      hash: md5
+      md5: 15dcad64de4d48bc1a88de360252eb6c
+      size: 302
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_coatnet.py
+      hash: md5
+      md5: 509b4e52842bc95df479fcfa981b9162
+      size: 8612
+    outs:
+    - path: models/coatnet/coatnet.pt
+      hash: md5
+      md5: ad506e69056815327f85ce747e3b77e6
+      size: 106868238
+    - path: results/coatnet
+      hash: md5
+      md5: f3e91cc82a103bda5574283d26d0c237.dir
+      size: 150072
+      nfiles: 6
+  train_maxvit:
+    cmd: python training/train_maxvit.py --config configs/train_maxvit.yaml
+    deps:
+    - path: configs/train_maxvit.yaml
+      hash: md5
+      md5: 4c28bca157177e96c8d6bd622a729a74
+      size: 268
+    - path: dataset
+      hash: md5
+      md5: 66242c2188ace9969dab9bc8156b40cb.dir
+      size: 686866527
+      nfiles: 2865
+    - path: training/train_maxvit.py
+      hash: md5
+      md5: 44f94de98e0aeda12514a1f04a00ebc0
+      size: 8511
+    outs:
+    - path: models/maxvit/maxvit.pt
+      hash: md5
+      md5: 95dc982c379c1ddaa2b8ebbb6872a627
+      size: 122065566
+    - path: results/maxvit
+      hash: md5
+      md5: 90e76d1d7537845a3a3e6e383625c981.dir
+      size: 219751
+      nfiles: 6

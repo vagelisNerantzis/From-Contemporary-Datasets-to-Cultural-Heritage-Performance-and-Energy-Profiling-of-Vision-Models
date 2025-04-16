@@ -1,0 +1,13 @@
+# Configuration for training ResNet50
+model_name: resnet50
+pretrained: true
+num_epochs: 10
+batch_size: 32
+learning_rate: 0.0001
+loss_function: focal
+image_size: 224
+num_workers: 2
+save_path: models/resnet50/resnet50.pt
+results_path: results/resnet50/
+data_dir: dataset/fabrics_split
+
