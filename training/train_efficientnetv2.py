@@ -17,6 +17,10 @@ import time
 import subprocess
 import threading
 
+
+# Path to the codecarbon lock file. This is used by codecarbon to prevent
+# multiple instances from running simultaneously. We define it here to be able
+# to manage it if necessary.
 CODECARBON_LOCK_FILE = os.path.join(os.path.expanduser("~"), "AppData", "Local", "Temp", ".codecarbon.lock")
 
 class FocalLoss(nn.Module):
