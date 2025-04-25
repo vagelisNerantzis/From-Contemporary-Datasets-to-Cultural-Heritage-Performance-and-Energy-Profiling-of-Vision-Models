@@ -1,6 +1,4 @@
-# FabricNet Benchmark
-
-## Deep Learning Benchmarking for Imbalanced Fabric Classification with Energy Profiling
+# Deep Learning Benchmarking for Imbalanced Fabric Classification with Energy Profiling
 
 This repository contains a series of reproducible machine learning experiments designed to evaluate and compare the performance and energy efficiency of various deep learning architectures on the highly imbalanced [FABRICS dataset](https://ibug.doc.ic.ac.uk/resources/fabrics/). The dataset consists of images of textile samples from multiple categories with significant class imbalance, posing a challenge for standard supervised learning models.
 
