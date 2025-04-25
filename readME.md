@@ -1,4 +1,4 @@
-# Deep Learning Benchmarking for Imbalanced Fabric Classification with Energy Profiling
+#From Contemporary Datasets to Cultural Heritage: Performance and Energy Profiling of Vision Models for Ancient Fabric Recognition
 
 This repository contains a series of reproducible machine learning experiments designed to evaluate and compare the performance and energy efficiency of various deep learning architectures on the highly imbalanced [FABRICS dataset](https://ibug.doc.ic.ac.uk/resources/fabrics/). The dataset consists of images of textile samples from multiple categories with significant class imbalance, posing a challenge for standard supervised learning models.
 
