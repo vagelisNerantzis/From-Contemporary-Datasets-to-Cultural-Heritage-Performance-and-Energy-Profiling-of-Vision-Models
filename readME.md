@@ -133,6 +133,8 @@ Visual outputs available:
 - `loss_curve.png`
 - `accuracy_curve.png`
 - `confusion_matrix.png`
+- 'resnet50_heatmap_grid.png'
+  
 
 
 
