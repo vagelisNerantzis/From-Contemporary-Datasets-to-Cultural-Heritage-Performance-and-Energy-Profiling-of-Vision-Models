@@ -27,7 +27,6 @@ The experimental setup integrates state-of-the-art convolutional and transformer
 | Swin Transformer    | Hierarchical Transformer| Window-based local self-attention                        |
 | ConvNeXt-T          | Hybrid CNN             | ConvNet redesigned with transformer-like components       |
 | EfficientNetV2-S    | Scaled CNN             | Progressive compound scaling                              |
-| CoAtNet             | Hybrid Conv-Transformer| Convolution + Attention Network from Google               |
 | MaxViT              | Multi-Axis Transformer | Multi-scale vision transformer from Google                |
 
 All models are implemented using the `torchvision` library with support for pretrained weights (ImageNet1K), and are fine-tuned on the FABRICS dataset using consistent settings.
